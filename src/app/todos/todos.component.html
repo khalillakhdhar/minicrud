@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+        <th>Id</th>
+        <th>Task</th>
+        <th>état</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let todo of todos  | paginate: { itemsPerPage: 10, currentPage: p }">
+        <td>{{todo.id}}</td>
+        <td>{{todo.title}}</td>
+        <td>{{todo.completed}}</td>
+        <td>
+            <button class="btn btn-danger" (click)="delete(todo.id)">Delete</button>
+        </td>
+        </tr>
+    </tbody>
+
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
